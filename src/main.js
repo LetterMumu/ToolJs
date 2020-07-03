@@ -1,3 +1,3 @@
-// import { debounce } from './tools'
-// export default debounce;
-alert('aa')
+import ToolJs from './tools'
+
+export default ToolJs

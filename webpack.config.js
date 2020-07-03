@@ -1,5 +1,5 @@
 const path = require('path')
-const uglifyjs = require('uglifyjs-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const packageName = 'toolJs'
 let config = {
   mode: 'none',
@@ -13,9 +13,9 @@ let config = {
     libraryTarget: 'umd',
     jsonpFunction: `webpackJsonp_${packageName}`
   },
-  plugins: [
-    new uglifyjs()
-  ]
+  optimization: {
+    minimizer: [new UglifyJsPlugin()],
+  }
 }
 
 module.exports = config

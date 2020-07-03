@@ -1,14 +1,4 @@
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else if(typeof exports === 'object')
-		exports["toolJs"] = factory();
-	else
-		root["toolJs"] = factory();
-})(window, function() {
-return /******/ (function(modules) { // webpackBootstrap
+/******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -102,7 +92,8 @@ return /******/ (function(modules) { // webpackBootstrap
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tools__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 
-/* harmony default export */ __webpack_exports__["default"] = (_tools__WEBPACK_IMPORTED_MODULE_0__["debounce"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (_tools__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 /***/ }),
 /* 1 */
@@ -110,36 +101,40 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "debounce", function() { return debounce; });
 /**
- * @desc 函数防抖
+ * @debounce 函数防抖
  * @param func 函数
- * @param wait 延迟执行毫秒数
- * @param immediate true 表立即执行，false 表非立即执行
+ * @param wait 延迟执行毫秒数,默认1s
+ * @param immediate true 立即执行，false 到达时间后执行 默认为false
  */
-function debounce(func, wait, immediate) {
-  let timeout;
+/* harmony default export */ __webpack_exports__["default"] = ({
+  debounce: function (func, wait = 1000, immediate = false) {
+    let timeout;
+    return function () {
+      const that = this;
+      const args = arguments;
 
-  return function () {
-    let context = this;
-    let args = arguments;
+      if (timeout) clearTimeout(timeout);
+      if (immediate) {
+        var callNow = !timeout;
+        timeout = setTimeout(() => {
+          timeout = null;
+        }, wait)
+        if (callNow) func.apply(that, args)
+      } else {
+        timeout = setTimeout(function () {
+          func.apply(that, args)
+        }, wait);
+      }
+    }
+  },
 
-    if (timeout) clearTimeout(timeout);
-    if (immediate) {
-      var callNow = !timeout;
-      timeout = setTimeout(() => {
-        timeout = null;
-      }, wait)
-      if (callNow) func.apply(context, args)
-    }
-    else {
-      timeout = setTimeout(function () {
-        func.apply(context, args)
-      }, wait);
-    }
+  a: function () {
+    return (() => {
+      console.log('1')
+    })()
   }
-}
+});
 
 /***/ })
 /******/ ]);
-});
