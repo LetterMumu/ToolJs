@@ -1,10 +1,11 @@
 const path = require('path')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+// const MiniJsPlugin = require('UglifyJS-webpack-plugin')
+const MiniJsPlugin = require('terser-webpack-plugin')
 const packageName = 'toolJs'
 let config = {
   mode: 'none',
   entry: {
-    main: path.join(__dirname, './src/main.js')
+    main: path.join(__dirname, './src/index.js')
   },
   output: {
     filename: '[name].bundle.js',
@@ -13,8 +14,16 @@ let config = {
     libraryTarget: 'umd',
     jsonpFunction: `webpackJsonp_${packageName}`
   },
+  // module: {
+  //   rules: [{
+  //     test: /\.js$/,
+  //     exclude: /node_modules/,
+  //     loader: "babel-loader",
+  //   }, ],
+  // },
   optimization: {
-    minimizer: [new UglifyJsPlugin()],
+    minimize: true,
+    minimizer: [new MiniJsPlugin()],
   }
 }
 
