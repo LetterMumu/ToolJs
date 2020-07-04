@@ -8,10 +8,10 @@ const packageName = 'toolJs'
 let config = {
   mode: 'none',
   entry: {
-    main: path.join(__dirname, './src/index.js')
+    test: path.join(__dirname, './test.js')
   },
   output: {
-    filename: '[name].bundle.js',
+    filename: `[name].bundle.js`,
     path: path.join(__dirname, './dist'),
     library: packageName,
     libraryTarget: 'umd',

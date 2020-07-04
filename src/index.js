@@ -1,9 +1,8 @@
-var ToolJs = require('./tools/index.js')
-
-module.exports.ToolJs = ToolJs
-// var str = '<text>JS</text><text>正则</text>';
-// var allMatchs = str.matchAll(/<\w+>(.*?)<\/\w+>/g);
-
-// for (const match of allMatchs) {
-//   console.log(match);
-// }
+import ToolJs from './tools/index.js'
+import Detection from './detection'
+export const a = ToolJs.a
+export const testInteger = Detection.testInteger
+export default {
+    ...ToolJs,
+    ...Detection
+}
