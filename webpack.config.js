@@ -11,7 +11,7 @@ let config = {
     main: path.join(__dirname, './src/index.js')
   },
   output: {
-    filename: '[name].bundle.js',
+    filename: 'muTools.js',
     path: path.join(__dirname, './dist'),
     library: packageName,
     libraryTarget: 'umd',

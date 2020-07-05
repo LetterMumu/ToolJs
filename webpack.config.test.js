@@ -12,7 +12,7 @@ let config = {
   },
   output: {
     filename: `[name].bundle.js`,
-    path: path.join(__dirname, './dist'),
+    path: path.join(__dirname, './test'),
     library: packageName,
     libraryTarget: 'umd',
     globalObject: 'this',

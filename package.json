@@ -1,18 +1,19 @@
 {
-  "name": "tooljs",
+  "name": "@lettermumu/xutools",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/muTools.js",
+  "files": ["dist"],
   "scripts": {
     "build": "webpack --config webpack.config.js --progress --colors",
     "testBuild": "webpack --config webpack.config.test.js --progress --colors",
-    "test": "npm run build && npm run testBuild && node dist/test.bundle.js"
+    "test": "npm run build && npm run testBuild && node test/test.bundle.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LetterMumu/ToolJs.git"
   },
-  "author": "",
+  "author": "LetterMumu",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/LetterMumu/ToolJs/issues"
