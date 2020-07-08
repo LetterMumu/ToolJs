@@ -60,19 +60,39 @@ export default {
   },
   /**
    * @desc 简易版深拷贝
+   * @param source  对象
    */
-  easyClone: function (source) {
+  easyClone: function (obj) {
     var target = {};
-    for (var i in source) {
-      if (source.hasOwnProperty(i)) {
-        if (typeof source[i] === 'object') {
-          target[i] = easyClone(source[i]);
+    for (var i in obj) {
+      if (obj.hasOwnProperty(i)) {
+        if (typeof obj[i] === 'object') {
+          target[i] = easyClone(obj[i]);
         } else {
-          target[i] = source[i];
+          target[i] = obj[i];
         }
       }
     }
 
     return target;
+  },
+  /**
+   * @desc 流转文件下载
+   * 后端设置的文件名称在res.headers的 
+   * "content-disposition": "form-data; name=\"attachment\"; filename=\"20181211191944.zip\""
+   * @param blob 文件流
+   * @param name 文件名
+   */
+  streamDown: function (blob, name) {
+    const reader = new FileReader();
+    reader.readAsDataURL(blob);
+    reader.onload = (e) => {
+      const a = document.createElement('a');
+      a.download = name;
+      a.href = e.target.result;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    };
   }
 }
