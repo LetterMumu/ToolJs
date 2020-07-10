@@ -74,7 +74,7 @@ const detection = {
         return reg.test(idCard)
     },
     /**
-     * @desc 检测是否是身份证号(2019工信部)
+     * @desc 检测是否是手机号(2019工信部)
      * @param phone 要检测内容
      * @param reg 检测正则
      */
