@@ -27,10 +27,21 @@
 import ToolJs from './dist/muTools'
 import { testNum } from './dist/muTools'
 import { Detection } from './dist/muTools'
+import { Other } from './dist/muTools'
 console.log('\x1B[33m%s\x1b[0m', '\n<--------------------------test-------------------------->\n')
 
 console.log(testNum(11))
 console.log(ToolJs.testNum(11))
 console.log(Detection.testNum(11))
+let a = {
+  b:{
+    c:1
+  }
+}
+let d = ToolJs.easyClone(a)
+d.b = {
+  x:2
+}
+console.log(a,d)
 
 console.log('\x1B[33m%s\x1b[0m', '\n<--------------------------test-------------------------->')

@@ -1,5 +1,5 @@
-import Other from './other/index.js'
 import Detection from './detection'
+import Other from './other'
 // 单个导出
 export const {
     testInteger,
@@ -16,6 +16,12 @@ export const {
     testName,
     testCurrency
 } = { ...Detection }
+export const {
+    debounce,
+    throttle,
+    easyClone,
+    streamDown
+} = { ...Other }
 // 按工具类型导出
 export {
     Detection,

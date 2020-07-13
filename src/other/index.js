@@ -1,4 +1,4 @@
-export default {
+const other = {
   /**
    * @desc 防抖
    * @param func 函数
@@ -67,7 +67,7 @@ export default {
     for (var i in obj) {
       if (obj.hasOwnProperty(i)) {
         if (typeof obj[i] === 'object') {
-          target[i] = easyClone(obj[i]);
+          target[i] = other.easyClone(obj[i]);
         } else {
           target[i] = obj[i];
         }
@@ -96,3 +96,5 @@ export default {
     };
   }
 }
+
+export default other
