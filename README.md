@@ -97,16 +97,36 @@
     * 检测是否是银行卡号(微信支付):
        testCankCard(bankCard,reg)  
        * bankCard:要检测内容  
-       * reg 检测正则(默认为/^[1-9]\d{9,29}$/) 
+       * reg: 检测正则(默认为/^[1-9]\d{9,29}$/) 
   
     * 检测是否是中文名字:
        testName(name,reg)  
-       * name:要检测内容  
-       * reg 检测正则(默认为/^(?:[\u4e00-\u9fa5·]{2,})$/)   
+       * name: 要检测内容  
+       * reg: 检测正则(默认为/^(?:[\u4e00-\u9fa5·]{2,})$/)   
 
     * 检测是否是货币格式:
        testCurrency(currency,reg)  
-       * currency:要检测内容  
-       * reg 检测正则(默认为/^-?\d+(,\d{3})*(\.\d{1,2})?$/)    
+       * currency: 要检测内容  
+       * reg: 检测正则(默认为/^-?\d+(,\d{3})*(\.\d{1,2})?$/)    
  
 - other类:  
+    * 防抖:
+       debounce(func,sleep,immediate)  
+       * func: 需要包装的函数  
+       * sleep: 毫秒数  
+       * immediate: true 立即执行，false 到达时间后执行 默认为false  
+
+    * 节流:
+       throttle(func,sleep,type)  
+       * func: 需要包装的函数  
+       * sleep: 毫秒数  
+       * type: 1 表时间戳版，2 表定时器版  
+
+    * 简易版深拷贝:
+       easyClone(obj)  
+       * obj: 需要浅拷贝的对象  
+    
+    * 流转文件下载:
+       streamDown(blob,name)  
+       * blob: 文件流  
+       * name: 文件名(后端设置的文件名称在res.headers的"content-disposition": "form-data; name=\"attachment\"; filename=\"***.zip\"")  
