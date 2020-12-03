@@ -3,7 +3,9 @@
   "version": "1.0.1",
   "description": "",
   "main": "dist/muTools.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "webpack --config webpack.config.js --progress --colors",
     "testBuild": "webpack --config webpack.config.test.js --progress --colors",

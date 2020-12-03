@@ -1,6 +1,8 @@
 import Detection from './detection'
 import Other from './other'
-// 单个导出
+const obj = { ...Detection, ...Other }
+export * from { ...obj }
+单个导出
 export const {
     testInteger,
     testPositiveInteger,
@@ -14,7 +16,10 @@ export const {
     testPlateNumber,
     testCankCard,
     testName,
-    testCurrency
+    testCurrency,
+    addWaterMark,
+    dataURLToBlob,
+    dataURLToFile
 } = { ...Detection }
 export const {
     debounce,

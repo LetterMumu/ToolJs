@@ -24,10 +24,13 @@
  * 'yellowBG'      : ['\x1B[43m', '\x1B[49m']  
  */
 
-import ToolJs from './dist/muTools'
-import { testNum } from './dist/muTools'
-import { Detection } from './dist/muTools'
-import { Other } from './dist/muTools'
+import ToolJs from './src/muTools'
+import { testNum } from './src/muTools'
+import { Detection } from './src/muTools'
+
+
+
+import { Other } from './src/muTools'
 console.log('\x1B[33m%s\x1b[0m', '\n<--------------------------test-------------------------->\n')
 
 console.log(testNum(11))

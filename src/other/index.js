@@ -94,6 +94,67 @@ const other = {
       a.click();
       document.body.removeChild(a);
     };
+  },
+  /**
+   * @desc 添加水印
+   * @param strArr 水印内容
+   * @param style 样式
+   * @param width 水印宽
+   * @param height 水印高
+   * @param rotate 旋转角度
+   * @param font 字体样式
+   * @param fillStyle 填充样式
+   * @param textAlign 文字水平位置
+   * @param textBaseline 文字垂直位置
+   */
+  addWaterMark: function (strArr = '水印', style = {}, width = 400, height = 300, rotate = (-20 * Math.PI) / 180, font = '30px Microsoft YaHei', fillStyle = 'rgba(17, 17, 17, 0.25)', textAlign = 'left', fillText = [0, 10]) {
+    let ctx = document.createElement('canvas')
+    ctx.width = width
+    ctx.height = height
+    let obj = Object.keys(style)
+    obj.forEach(element => {
+      ctx.style[element] = style[element]
+    });
+    let cans = ctx.getContext('2d')
+    cans.rotate(rotate)
+    cans.font = font
+    cans.fillStyle = fillStyle
+    cans.textAlign = textAlign
+    cans.textBaseline = 'Middle'
+    cans.fillText(strArr, [...fillText])
+    cans.save()
+    return ctx.toDataURL()
+  },
+  /**
+    * @desc 把 dataURL 转成 blob
+    * @param dataurl dataURL
+    **/
+  dataURLToBlob(dataurl) {
+    let arr = dataurl.split(','),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n)
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n)
+    }
+    return new Blob([u8arr], { type: mime })
+  },
+  /**
+    * @desc 把 dataURL 转成 file
+    * @param dataurl dataURL
+    * @param fileName 文件名
+    **/
+  dataURLToFile(dataurl, fileName) {
+    let arr = dataurl.split(','),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n)
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n)
+    }
+    return new File([u8arr], fileName, { type: mime })
   }
 }
 
