@@ -155,6 +155,24 @@ const other = {
       u8arr[n] = bstr.charCodeAt(n)
     }
     return new File([u8arr], fileName, { type: mime })
+  },
+  /**
+    * @desc 解决跨域的话download属性失效
+    * @param url 资源地址
+    * @param fileName 文件名
+    **/
+  downloadFile(url, fileName) {
+    var x = new XMLHttpRequest();
+    x.open("GET", url, true);
+    x.responseType = 'blob';
+    x.onload=function(e) {
+        var url = window.URL.createObjectURL(x.response)
+        var a = document.createElement('a');
+        a.href = url
+        a.download = fileName;
+        a.click()
+    }
+    x.send();
   }
 }
 
